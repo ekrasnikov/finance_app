@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres:15.2
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432
+    volumes:
+      - fa_postgres:/var/lib/postgresql
+
+volumes:
+  fa_postgres:

@@ -6,6 +6,7 @@ from starlette_context.middleware import RawContextMiddleware
 import application
 
 from configs.api import config
+from app.v1 import router as api_router_v1
 
 middleware = [Middleware(RawContextMiddleware)]
 
@@ -17,6 +18,7 @@ app = FastAPI(
     openapi_url="/docs/api/openapi.json",
     middleware=middleware,
 )
+app.include_router(api_router_v1, prefix='/api/v1')
 
 
 @app.on_event("startup")
